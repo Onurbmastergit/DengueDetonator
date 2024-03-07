@@ -4,9 +4,9 @@ public class EnemyController : MonoBehaviour
 {
     public float velocidade = 0; // Velocidade de movimento do inimigo
 
-    bool chegouAoDestino = true; // Indica se o inimigo chegou ao destino de rondagem
+    public bool chegouAoDestino = true; // Indica se o inimigo chegou ao destino de rondagem
     bool rondarArea = true; // Indica se o inimigo está rondando a área
-    bool seguirJogador = false; // Indica se o inimigo está seguindo o jogador
+    public bool seguirJogador = false; // Indica se o inimigo está seguindo o jogador
 
     Vector3 destino; // O destino atual para o qual o inimigo está se movendo
 
@@ -14,12 +14,14 @@ public class EnemyController : MonoBehaviour
     bool movendoParaEsquerda = false; // Indica se o inimigo está se movendo para a esquerda
     bool movendoParaFrente = false; // Indica se o inimigo está se movendo para frente
     bool movendoParaTras = false;
+    public bool die = false;
     Rigidbody rb;
     Transform mainCameraTransform; // Referência para a transformada da MainCamera
 
     public GameObject Front;
     public GameObject Left;
     public GameObject Right;
+    public GameObject Death;
 
     private void Start()
     {
@@ -31,7 +33,7 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         // Se o inimigo está seguindo o jogador
-        if (seguirJogador)
+        if (seguirJogador && die == false && chegouAoDestino == true)
         {
             Vector3 positionPlayer = GameObject.FindWithTag("Player").transform.position; // Obtém a posição do jogador
             transform.position = Vector3.MoveTowards(transform.position, positionPlayer, velocidade * Time.deltaTime); // Move-se em direção ao jogador
@@ -44,10 +46,10 @@ public class EnemyController : MonoBehaviour
             movendoParaEsquerda = (positionPlayer.x < transform.position.x);
             movendoParaFrente = (positionPlayer.z > transform.position.z);
             movendoParaTras = (positionPlayer.z < transform.position.z);
-            Invoke("DesabilitaChegouAoDestino", 3f); // Invoca o método para desativar a variável de chegada ao destino após 2 segundos
+            // Invoca o método para desativar a variável de chegada ao destino após 2 segundos
         }
         // Se o inimigo está rondando a área
-        if (rondarArea)
+        if (rondarArea && die == false)
         {
             // Se o inimigo chegou ao destino
             if (chegouAoDestino)
@@ -82,29 +84,39 @@ public class EnemyController : MonoBehaviour
     {
       transform.LookAt(mainCameraTransform.position);
 
-    // Ativar e desativar objetos com base na direção do movimento
-    if (movendoParaDireita)
-    {
-        Front.SetActive(false);
-        Left.SetActive(false);
-        Right.SetActive(true);
-    }
-    else if (movendoParaEsquerda)
-    {
-        Front.SetActive(false);
-        Left.SetActive(true);
-        Right.SetActive(false);
-    }
-    else
-    {
-        Front.SetActive(true);
-        Left.SetActive(false);
-        Right.SetActive(false);
-    }
+        if (die == true) 
+        {
+            Death.SetActive(true);
+            Front.SetActive(false);
+            Right.SetActive(false);
+            Left.SetActive(false);
+        }
+
+        if (die == false)
+        { // Ativar e desativar objetos com base na direção do movimento
+            if (movendoParaDireita)
+            {
+                Front.SetActive(false);
+                Left.SetActive(false);
+                Right.SetActive(true);
+            }
+            else if (movendoParaEsquerda)
+            {
+                Front.SetActive(false);
+                Left.SetActive(true);
+                Right.SetActive(false);
+            }
+            else
+            {
+                Front.SetActive(true);
+                Left.SetActive(false);
+                Right.SetActive(false);
+            }
+        }
     }
 
     // Método para desativar a variável de chegada ao destino após 2 segundos
-    void DesabilitaChegouAoDestino()
+    public void DesabilitaChegouAoDestino()
     {
         chegouAoDestino = false; // Desativa a variável de chegada ao destino
         transform.LookAt(mainCameraTransform.position); // Olha na direção do destino
@@ -113,7 +125,7 @@ public class EnemyController : MonoBehaviour
     // Quando algo entra no trigger do inimigo
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && die == false)
         {
             rondarArea = false; // Define que o inimigo não está mais rondando a área
             seguirJogador = true; // Define que o inimigo está seguindo o jogador
@@ -123,7 +135,7 @@ public class EnemyController : MonoBehaviour
     // Quando algo sai do trigger do inimigo
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && die == false)
         {
             rondarArea = true; // Define que o inimigo está rondando a área novamente
             seguirJogador = false; // Define que o inimigo não está mais seguindo o jogador

@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class CombatDengue : MonoBehaviour
 {
-      private void OnTriggerEnter(Collider other)
+    public EnemyController enemyController; // Referência ao componente EnemyController
+
+   
+
+    private void OnTriggerEnter(Collider other)
     {
-       if(other.CompareTag("Player") )
-       {
-        Debug.Log("Picado!!!");
-         other.GetComponent<PlayerStatus>().ReceberDano(2);
-       }
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Picado!!!");
+            other.GetComponent<PlayerStatus>().ReceberDano(2);
+            Invoke("ParaAtaque", 1.5f);
+        }
+
+    }
+    void ParaAtaque() 
+    {
+        enemyController.DesabilitaChegouAoDestino();
     }
 }

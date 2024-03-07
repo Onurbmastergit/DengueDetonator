@@ -1086,6 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aguaParada: {fileID: 882297667039133348}
   aguaDengue: {fileID: 339505338381261024}
+  manager: {fileID: 377116807}
 --- !u!65 &272054063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2010,6 +2011,8 @@ MonoBehaviour:
   sprayAerosol: {fileID: 0}
   sprayLimit: 4
   sandLimit: 5
+  numHands: 0
+  enabledHand: 1
 --- !u!114 &377116813
 MonoBehaviour:
   m_ObjectHideFlags: 0

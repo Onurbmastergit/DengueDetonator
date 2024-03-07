@@ -17,8 +17,8 @@ public class AnimationScript : MonoBehaviour
     public  int sprayLimit = 4;
     public  int sandLimit = 5;
 
-    int numHands;
-    bool enabledHand = true;
+    public int numHands;
+    public bool enabledHand = true;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class AnimationScript : MonoBehaviour
 
     void Update()
     {
-        if (numHands == 1 && sprayLimit != 0)
+        if (numHands == 1 && sprayLimit >= 0)
         {
             handAnimator.SetBool("Aerosol" , true);
             handAnimator.SetBool("Raquete", false);
@@ -46,7 +46,7 @@ public class AnimationScript : MonoBehaviour
                 Invoke("EnalbedHand", 0.3f);
             }
         }
-        if (numHands == 2 && sandLimit != 0)
+        if (numHands == 2 && sandLimit >= 0)
         {
             handAnimator.SetBool("Aerosol", false);
             handAnimator.SetBool("Raquete", false);
@@ -95,20 +95,12 @@ public class AnimationScript : MonoBehaviour
         {
             HandAnimation();
         }
-        if (sprayLimit <= 0) 
-        {    
-            sprayLimit = 0;
-        }
-        if (sandLimit <= 0) 
-        {
-            sandLimit = 0;
-        }
 
-        if (numHands == 1 && sprayLimit == 0) 
+        if (numHands == 1 && sprayLimit < 0) 
         {
             numHands = 3;
         }
-        if (numHands == 2 && sandLimit == 0) 
+        if (numHands == 2 && sandLimit < 0) 
         {
             numHands = 3;
         }
@@ -118,21 +110,23 @@ public class AnimationScript : MonoBehaviour
     void HandAnimation() 
     {
         enabledHand = !enabledHand;
-        if (numHands == 1 && sprayLimit != 0)
+        if (numHands == 1 && sprayLimit >= 0)
         {
             handAerosol.SetActive(enabledHand);
             handAerosol2.SetActive(!enabledHand);
-            if (enabledHand == false && numHands == 1)
+            if (enabledHand != true && numHands == 1 && sprayLimit >= 0)
             {
+                Debug.Log($"Resta apenas{sprayLimit}");
                 sprayLimit--;
             }
         }
-        if (numHands == 2 && sprayLimit != 0)
+        if (numHands == 2 && sprayLimit >= 0)
         {   
             handSand.SetActive(enabledHand);
             handSand2.SetActive(!enabledHand);
-            if (enabledHand == false && numHands == 2)
+            if (enabledHand != true && numHands == 2 && sandLimit >= 0)
             {
+                Debug.Log($"Resta apenas{sandLimit}");
                 sandLimit--;
             }
         }
@@ -147,7 +141,6 @@ public class AnimationScript : MonoBehaviour
     void EnalbedHand() 
     {
         enabledHand = true;
-        
     }
    
 }

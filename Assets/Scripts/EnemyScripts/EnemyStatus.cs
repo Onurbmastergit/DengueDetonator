@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     int vidaAtual;
-    public int vidaTotal;
+    public  static int vidaTotal = 6;
+    public GameObject SmokeHit;
 
     void Start()
     {
@@ -14,13 +15,26 @@ public class EnemyStatus : MonoBehaviour
     public void ReceberDano(int valor)
     {
         vidaAtual -= valor;
+        Debug.Log($"vida atual é {vidaAtual}");
         VerificarMorte();
+        SmokeHit.SetActive(true);
+        Invoke("DesabilitaHit", 0.5f);
+
     }
     void VerificarMorte()
     {
-        if(vidaAtual == 0)
+        if(vidaAtual <= 0)
         {
-            Destroy(gameObject);
+            transform.GetComponent<EnemyController>().die = true;
+            Invoke("DestruirCorpo", 1.5f);
         }
+    }
+    void DesabilitaHit() 
+    {
+        SmokeHit.SetActive(false);
+    }
+    void DestruirCorpo() 
+    {
+        Destroy(gameObject);
     }
 }

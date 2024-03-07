@@ -10,13 +10,14 @@ public class CollisonCombat : MonoBehaviour
     {
        if(other.CompareTag("Dengue") && spray == true)
        {
-         other.GetComponent<EnemyStatus>().ReceberDano(1);
+         other.GetComponent<EnemyStatus>().ReceberDano(EnemyStatus.vidaTotal);
          Debug.Log("Spray");
        }
        if(other.CompareTag("Dengue") && raquete == true)
        {
-         other.GetComponent<EnemyStatus>().ReceberDano(1);
-         Debug.Log("Raquete");
+          Debug.Log("Raquete");
+          other.GetComponent<EnemyStatus>().ReceberDano(2);
+         
        }
     }
 }
