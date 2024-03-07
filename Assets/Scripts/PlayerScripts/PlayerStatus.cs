@@ -6,6 +6,7 @@ public class PlayerStatus : MonoBehaviour
 {
     public int vidaAtual;
     public int vidaTotal;
+    public GameObject HitImagem;
 
     void Start()
     {
@@ -15,6 +16,8 @@ public class PlayerStatus : MonoBehaviour
     {
         vidaAtual -= valor;
         VerificarMorte();
+        HitImagem.SetActive(true);
+        Invoke("DesabilitarHitImagem", 0.5f);
     }
     void VerificarMorte()
     {
@@ -22,5 +25,9 @@ public class PlayerStatus : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void DesabilitarHitImagem() 
+    {
+        HitImagem.SetActive(false);
     }
 }
