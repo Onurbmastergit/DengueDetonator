@@ -22,7 +22,9 @@ public class NerfSpawnDengue : MonoBehaviour
             if (manager.GetComponent<AnimationScript>().enabledHand == false && manager.GetComponent<AnimationScript>().numHands == 2)
             {
                 manager.GetComponent<AnimationScript>().sandLimit--;
+                
             }
+            Destroy(other.gameObject);
         }
     }
 }
