@@ -6,12 +6,14 @@ public class NerfSpawnDengue : MonoBehaviour
 {
     public GameObject aguaParada;
     public GameObject aguaDengue;
+    public AudioSource CheckSound;
 
     public GameObject manager;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Criadouro")) 
         {
+            CheckSound.Play();
             Debug.Log("Parabens vc conseguiu nerfar o spawn");
             other.GetComponent<Spawner>().enabledSpawn = false;
            aguaParada.SetActive(true);
