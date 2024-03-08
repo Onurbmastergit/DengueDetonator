@@ -16,5 +16,9 @@ void LoadGameTest()
 {
      SceneManager.LoadScene("GameTest");
 }
+public void BackToTheMenu()
+{
+    SceneManager.LoadScene("Menu");
+}
 
 }

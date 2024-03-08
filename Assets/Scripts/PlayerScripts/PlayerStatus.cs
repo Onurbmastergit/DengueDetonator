@@ -12,6 +12,10 @@ public class PlayerStatus : MonoBehaviour
     public GameObject FaceHit1;
     public GameObject FaceHit2;
     public GameObject FaceHit3;
+    public GameObject GameOverHud;
+    public GameObject GameHud;
+    public GameObject GameWinHud;
+    public GameObject HandPlayer;
 
     private Image barLifeImage;
 
@@ -19,10 +23,17 @@ public class PlayerStatus : MonoBehaviour
     {
         vidaAtual = vidaTotal;
         barLifeImage = barLifeLimit.GetComponent<Image>();
+        GameHud.SetActive(true);
+        GameOverHud.SetActive(false);
     }
     void Update()
     {
         AtualizarBarraVida();
+        if(Spawner.criadouroDaDengue == 0)
+        {
+            GameWinHud.SetActive(true);
+            HandPlayer.SetActive(false);
+        }
     }
 
     public void ReceberDano(int valor)
@@ -41,7 +52,9 @@ public class PlayerStatus : MonoBehaviour
     {
         if (vidaAtual <= 0)
         {
-            Destroy(gameObject);
+           GameHud.SetActive(false);
+           GameOverHud.SetActive(true);
+           HandPlayer.SetActive(false);
         }
     }
 
