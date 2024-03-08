@@ -10,6 +10,7 @@ public class PlayerMoviment : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    public AudioSource Walk;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -29,6 +30,8 @@ public class PlayerMoviment : MonoBehaviour
 
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
@@ -37,7 +40,14 @@ public class PlayerMoviment : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
         bool isMoving = curSpeedX != 0 || curSpeedY != 0;
-
+        if(isMoving == true)
+        {
+            Walk.Play();
+        }
+        if(isMoving == false)
+        {
+            Walk.Stop();
+        }
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;

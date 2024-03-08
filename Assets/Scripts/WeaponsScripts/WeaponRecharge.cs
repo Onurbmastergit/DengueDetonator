@@ -7,6 +7,9 @@ public class WeaponRecharge : MonoBehaviour
     public bool spray;
     public bool areia;
     public bool repelente;
+
+    public AudioSource PickUp;
+    public AudioSource HealthPickUp;
     public Transform mainCameraTransform;
 
     void Update()
@@ -22,6 +25,7 @@ public class WeaponRecharge : MonoBehaviour
                 other.GetComponent<AnimationScript>().sprayLimit += 2;
             }
             other.GetComponent<AnimationScript>().sprayLimit++;
+            PickUp.Play();
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Player") && areia == true)
@@ -31,12 +35,14 @@ public class WeaponRecharge : MonoBehaviour
                 other.GetComponent<AnimationScript>().sandLimit +=2;
             }
             other.GetComponent<AnimationScript>().sandLimit++;
+            PickUp.Play();
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Player") && repelente == true)
         {
 
             other.GetComponent<PlayerStatus>().vidaAtual += 10;
+            HealthPickUp.Play();
             Destroy(gameObject);
         }
     }

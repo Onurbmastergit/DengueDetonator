@@ -25,8 +25,12 @@ public class AnimationScript : MonoBehaviour
     public GameObject IconSpray;
     public GameObject IconSand;
 
+    public AudioSource Spray;
+    public AudioSource Raquetada;
+    
+
     public Animator handAnimator;
-    public AudioSource sprayAerosol;
+    
 
     public  int sprayLimit = 4;
     
@@ -228,6 +232,7 @@ public class AnimationScript : MonoBehaviour
         enabledHand = !enabledHand;
         if (numHands == 1 && sprayLimit >= 0)
         {
+            Spray.Play();
             handAerosol.SetActive(enabledHand);
             handAerosol2.SetActive(!enabledHand);
             if (enabledHand != true && numHands == 1 && sprayLimit >= 0)
@@ -248,6 +253,7 @@ public class AnimationScript : MonoBehaviour
         }
         if(numHands == 3)
         {
+            Raquetada.Play();
            handRaquete.SetActive(enabledHand);
            handRaquete1.SetActive(!enabledHand);
         }

@@ -16,6 +16,8 @@ public class PlayerStatus : MonoBehaviour
     public GameObject GameHud;
     public GameObject GameWinHud;
     public GameObject HandPlayer;
+    public AudioSource TakeDamage;
+    public AudioSource ScreamMan;
 
     private Image barLifeImage;
 
@@ -38,6 +40,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void ReceberDano(int valor)
     {
+        TakeDamage.Play();
         vidaAtual -= valor;
         VerificarMorte();
         AtualizarBarraVida();
@@ -52,6 +55,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (vidaAtual <= 0)
         {
+            ScreamMan.Play();
            GameHud.SetActive(false);
            GameOverHud.SetActive(true);
            HandPlayer.SetActive(false);
