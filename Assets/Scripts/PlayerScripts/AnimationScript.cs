@@ -10,13 +10,27 @@ public class AnimationScript : MonoBehaviour
     public GameObject handSand2;
     public GameObject handRaquete;
     public GameObject handRaquete1;
+    public GameObject barSandLimt;
+    public GameObject barsSand1;
+    public GameObject barsSand2;
+    public GameObject barsSand3;
+    public GameObject barsSand4;
+    public GameObject barsSand5;
+    public GameObject barSprayLimit;
+    public GameObject barSpray1;
+    public GameObject barSpray2;
+    public GameObject barSpray3;
+    public GameObject barSpray4;
+    public GameObject IconRaquete;
+    public GameObject IconSpray;
+    public GameObject IconSand;
 
     public Animator handAnimator;
     public AudioSource sprayAerosol;
 
     public  int sprayLimit = 4;
+    
     public  int sandLimit = 5;
-
     public int numHands;
     public bool enabledHand = true;
 
@@ -30,6 +44,93 @@ public class AnimationScript : MonoBehaviour
 
     void Update()
     {
+        if(sprayLimit == 4)
+        {
+        barSpray4.SetActive(true);
+        barSpray3.SetActive(true);
+        barSpray2.SetActive(true);
+        barSpray1.SetActive(true);
+        }
+         if(sprayLimit == 3)
+        {
+        barSpray4.SetActive(false);
+        barSpray3.SetActive(true);
+        barSpray2.SetActive(true);
+        barSpray1.SetActive(true);
+        }
+         if(sprayLimit == 2)
+        {
+        barSpray4.SetActive(false);
+        barSpray3.SetActive(false);
+        barSpray2.SetActive(true);
+        barSpray1.SetActive(true);
+        }
+         if(sprayLimit == 1)
+        {
+        barSpray4.SetActive(false);
+        barSpray3.SetActive(false);
+        barSpray2.SetActive(false);
+        barSpray1.SetActive(true);
+        }
+         if(sprayLimit == 0)
+        {
+        barSpray4.SetActive(false);
+        barSpray3.SetActive(false);
+        barSpray2.SetActive(false);
+        barSpray1.SetActive(false);
+        }
+        
+         if(sandLimit == 5)
+        {
+        barsSand5.SetActive(true);
+        barsSand4.SetActive(true);
+        barsSand3.SetActive(true);
+        barsSand2.SetActive(true);
+        barsSand1.SetActive(true);
+        }
+        if(sandLimit == 4)
+        {
+        barsSand5.SetActive(false);    
+        barsSand4.SetActive(true);
+        barsSand3.SetActive(true);
+        barsSand2.SetActive(true);
+        barsSand1.SetActive(true);
+        }
+         if(sandLimit == 3)
+        {
+        barsSand5.SetActive(false);    
+        barsSand4.SetActive(false);
+        barsSand3.SetActive(true);
+        barsSand2.SetActive(true);
+        barsSand1.SetActive(true);
+        }
+         if(sandLimit == 2)
+        {
+        barsSand5.SetActive(false);    
+        barsSand4.SetActive(false);
+        barsSand3.SetActive(false);
+        barsSand2.SetActive(true);
+        barsSand1.SetActive(true);
+        }
+         if(sandLimit == 1)
+        {
+        barsSand5.SetActive(false);    
+        barsSand4.SetActive(false);
+        barsSand3.SetActive(false);
+        barsSand2.SetActive(false);
+        barsSand1.SetActive(true);
+        }
+         if(sandLimit == 0)
+         {
+        barsSand5.SetActive(false);    
+        barsSand4.SetActive(false);
+        barsSand3.SetActive(false);
+        barsSand2.SetActive(false);
+        barsSand1.SetActive(false);
+         }
+
+        
+        
         if (numHands == 1 && sprayLimit >= 0)
         {
             handAnimator.SetBool("Aerosol" , true);
@@ -39,6 +140,11 @@ public class AnimationScript : MonoBehaviour
             handSand2.SetActive(false);
             handRaquete.SetActive(false);
             handRaquete1.SetActive(false);
+            barSprayLimit.SetActive(true);
+            barSandLimt.SetActive(false);
+            IconSpray.SetActive(true);
+            IconSand.SetActive(false);
+            IconRaquete.SetActive(false);
             handAerosol.SetActive(enabledHand);
             handAerosol2.SetActive(!enabledHand);
             if (enabledHand == false)
@@ -55,6 +161,11 @@ public class AnimationScript : MonoBehaviour
             handAerosol2.SetActive(false);
             handRaquete.SetActive(false);
             handRaquete1.SetActive(false);
+             barSprayLimit.SetActive(false);
+            barSandLimt.SetActive(true);
+            IconSpray.SetActive(false);
+            IconSand.SetActive(true);
+            IconRaquete.SetActive(false);
             handSand.SetActive(enabledHand);
             handSand2.SetActive(!enabledHand);
             if (enabledHand == false)
@@ -71,6 +182,11 @@ public class AnimationScript : MonoBehaviour
             handAerosol2.SetActive(false);
             handSand.SetActive(false);
             handSand2.SetActive(false);
+             barSprayLimit.SetActive(false);
+            barSandLimt.SetActive(false);
+            IconSpray.SetActive(false);
+            IconSand.SetActive(false);
+            IconRaquete.SetActive(true);
             handRaquete.SetActive(enabledHand);
             handRaquete1.SetActive(!enabledHand);
             if (enabledHand == false)

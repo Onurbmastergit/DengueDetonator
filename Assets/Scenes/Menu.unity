@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,7 +152,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1773195317}
-  - {fileID: 203125735}
   m_Father: {fileID: 773209424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -220,15 +219,15 @@ RectTransform:
   m_GameObject: {fileID: 203125734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.67, y: 4.67, z: 4.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 67686197}
+  m_Father: {fileID: 1773195317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 36.067, y: -386}
-  m_SizeDelta: {x: -65.7479, y: -64.39604}
+  m_AnchoredPosition: {x: 12.148827, y: 4.4890137}
+  m_SizeDelta: {x: -166.584, y: -16.96474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203125736
 MonoBehaviour:
@@ -962,13 +961,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.67, y: 4.67, z: 4.67}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 203125735}
   m_Father: {fileID: 67686197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.097, y: -406.96378}
-  m_SizeDelta: {x: 154.5794, y: 52.5687}
+  m_AnchoredPosition: {x: -20.668, y: -406.96378}
+  m_SizeDelta: {x: 200.8361, y: 52.5687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773195318
 MonoBehaviour:
@@ -1047,10 +1047,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5a6a67f219813b94a90561610c484d27, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
