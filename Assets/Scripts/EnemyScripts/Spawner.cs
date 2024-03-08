@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     public TextMeshProUGUI numCriadouro;
     public float spawnInterval = 3f; // Intervalo de spawn em segundos
     public bool enabledSpawn = true ;
+    public bool nerfado = false ;
 
     public static int mosquitosTotais;
     public int mosquitosNacena;
