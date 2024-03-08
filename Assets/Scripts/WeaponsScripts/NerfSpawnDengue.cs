@@ -16,6 +16,7 @@ public class NerfSpawnDengue : MonoBehaviour
             other.GetComponent<Spawner>().enabledSpawn = false;
            aguaParada.SetActive(true);
            aguaDengue.SetActive(false);
+           Spawner.criadouroDaDengue--;
             if (manager.GetComponent<AnimationScript>().enabledHand == false && manager.GetComponent<AnimationScript>().numHands == 2)
             {
                 manager.GetComponent<AnimationScript>().sandLimit--;

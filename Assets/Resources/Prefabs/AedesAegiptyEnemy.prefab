@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmokeHit: {fileID: 2530471977308095252}
+  Spawner: {fileID: 4996679338923290528, guid: 09b52777164d73f43babb273afc50653, type: 3}
 --- !u!1 &1878099039536721574
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,12 @@ public class WeaponRecharge : MonoBehaviour
     public bool spray;
     public bool areia;
     public bool repelente;
+    public Transform mainCameraTransform;
+
+    void Update()
+    {
+        transform.LookAt(mainCameraTransform.position);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && spray == true) 
@@ -30,7 +36,7 @@ public class WeaponRecharge : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && repelente == true)
         {
 
-            other.GetComponent<PlayerStatus>().vidaAtual++;
+            other.GetComponent<PlayerStatus>().vidaAtual += 10;
             Destroy(gameObject);
         }
     }

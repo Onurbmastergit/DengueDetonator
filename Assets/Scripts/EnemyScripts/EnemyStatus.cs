@@ -7,15 +7,17 @@ public class EnemyStatus : MonoBehaviour
     int vidaAtual;
     public  static int vidaTotal = 6;
     public GameObject SmokeHit;
+    public GameObject Spawner;
 
     void Start()
     {
         vidaAtual = vidaTotal;
+        Spawner.GetComponent<Spawner>();
     }
     public void ReceberDano(int valor)
     {
         vidaAtual -= valor;
-        Debug.Log($"vida atual é {vidaAtual}");
+        Debug.Log($"vida atual ï¿½ {vidaAtual}");
         VerificarMorte();
         SmokeHit.SetActive(true);
         Invoke("DesabilitaHit", 0.5f);
@@ -26,6 +28,7 @@ public class EnemyStatus : MonoBehaviour
         if(vidaAtual <= 0)
         {
             transform.GetComponent<EnemyController>().die = true;
+            Spawner.GetComponent<Spawner>().mosquitosNacena--;
             Invoke("DestruirCorpo", 1.5f);
         }
     }
