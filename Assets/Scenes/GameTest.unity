@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4458524, g: 0.49558336, b: 0.5743459, a: 1}
+  m_IndirectSpecularColor: {r: 0.44585222, g: 0.49558294, b: 0.5743447, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4885,7 +4885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaAtual: 0
-  vidaTotal: 10
+  vidaTotal: 50
   barLifeLimit: {fileID: 401652118}
   HitImagem: {fileID: 46229147}
   FaceHit1: {fileID: 1553321976}
@@ -15653,7 +15653,7 @@ PrefabInstance:
       objectReference: {fileID: 795489300}
     - target: {fileID: 4581848218130828579, guid: 09b52777164d73f43babb273afc50653, type: 3}
       propertyPath: spawnInterval
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4581848218130828579, guid: 09b52777164d73f43babb273afc50653, type: 3}
       propertyPath: mosquitosNacena
@@ -24086,7 +24086,7 @@ PrefabInstance:
       objectReference: {fileID: 795489300}
     - target: {fileID: 4581848218130828579, guid: 09b52777164d73f43babb273afc50653, type: 3}
       propertyPath: spawnInterval
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4581848218130828579, guid: 09b52777164d73f43babb273afc50653, type: 3}
       propertyPath: mosquitosNacena

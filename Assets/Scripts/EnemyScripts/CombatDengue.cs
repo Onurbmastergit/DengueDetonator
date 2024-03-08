@@ -13,7 +13,7 @@ public class CombatDengue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Picado!!!");
-            other.GetComponent<PlayerStatus>().ReceberDano(2);
+            other.GetComponent<PlayerStatus>().ReceberDano(5);
             Invoke("ParaAtaque", 1.5f);
         }
 
