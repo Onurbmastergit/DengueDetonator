@@ -40,7 +40,8 @@ public class AnimationScript : MonoBehaviour
 
     void Start()
     {
-        
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
         numHands = 1;
         handAerosol.SetActive(enabledHand);
         handAerosol2.SetActive(!enabledHand);
